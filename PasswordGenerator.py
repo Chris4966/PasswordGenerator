@@ -1,4 +1,5 @@
 import random
+import os
 
 def GenerateChar():
     CharType = random.randint(1, 3)
@@ -19,8 +20,12 @@ def GenerateChar():
 
 def WriteToFile(filename, password):
     PWFile = open(filename, "a")
-    PWFile.write("Generated Password: " + password)
+    PWFile.write("Generated Password: " + password + "\n")
     PWFile.close()
+
+    path = os.path.abspath(filename)
+    dir = os.path.dirname(path)
+    print("Password saved in file: " + dir + "/" + filename)
 
 PasswordLength = 10
 Password = []

@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 # Function to generate random char
 def GenerateChar():
@@ -33,13 +34,22 @@ def WriteToFile(filename, password):
     print("Password saved in file: " + dir + "/" + filename)
 
 # Password list and length
-PasswordLength = 10
-Password = []
+print ("---Password Generator by Chris RH--- \nPlease select a desired length between 8 and 20: ")
+PasswordLength = int(input())
 
-# Calls the GenerateChar(function) for each iteration and appends it to the list
-for i in range(PasswordLength): 
-    Password.append(GenerateChar())
+if PasswordLength >= 8 and PasswordLength <= 20:
 
-# Prints the generated password to console and saves it to a file
-print("".join(Password))
-WriteToFile("passwords.txt", "".join(Password))
+    Password = []
+
+    # Calls the GenerateChar(function) for each iteration and appends it to the list
+    for i in range(PasswordLength): 
+        Password.append(GenerateChar())
+
+    # Prints the generated password to console and saves it to a file
+    print("".join(Password))
+    WriteToFile("passwords.txt", "".join(Password))
+    input()
+
+else:
+    print("Error: invalid input!")
+    input()
